@@ -6,16 +6,17 @@
 #include <QPixmap>
 #include <QObject>
 #include <QPainter>
-#include "mainwindow.h"
-#include "route.h"
-#include "basictower.h"
+
+class basictower;
+class route;
+class Dialog;
 
 class enemy1 : public QObject
 {
     Q_OBJECT
 public:
     explicit enemy1(QObject *parent = nullptr);
-    enemy1(route *startroute, MainWindow *game, const QPixmap &sprite = QPixmap(":/enemy1.png"));
+    enemy1(route *startroute, Dialog *game, const QPixmap &sprite = QPixmap(":/enemy1.png"));
     ~enemy1();
 
     void draw(QPainter *painter) const;
@@ -38,7 +39,7 @@ private:
 
     QPoint			_pos;
     route *		_destination;
-    MainWindow *	_game;
+    Dialog *	_game;
     QList<basictower *>	_attackedTowersList;
 
     const QPixmap	_sprite;

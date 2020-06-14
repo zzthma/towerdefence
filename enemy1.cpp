@@ -1,9 +1,9 @@
 #include "enemy1.h"
-#include "route.h".h"
+#include "route.h"
 #include "basictower.h"
 #include "effect.h"
-#include "mainwindow.h"
-
+#include "dialog.h"
+#include "sound.h"
 #include <QPainter>
 #include <QColor>
 #include <QDebug>
@@ -12,9 +12,9 @@
 #include <QtMath>
 
 static const int Health_Bar_Width = 20;
-const QSize Enemy::ms_fixedSize(100, 100);
+const QSize enemy1::ms_fixedSize(45, 45);
 
-enemy1::enemy1(route *startroute, MainWindow *game, const QPixmap &sprite)
+enemy1::enemy1(route *startroute, Dialog *game, const QPixmap &sprite)
     :QObject(0)
   , _active(false)
   , _maxHp(50)
@@ -55,8 +55,8 @@ void enemy1::move()
         }
         else
         {
-            _game->getHpDamage();
-            _game->removedEnemy(this);
+            _game->getHPdamage();
+            _game->removedenemy(this);
             return;
         }
     }
@@ -101,9 +101,9 @@ void enemy1::getRemoved()
     if (_attackedTowersList.empty())
         return;
 
-    foreach (Tower *attacker, _attackedTowersList)
+    foreach (basictower *attacker, _attackedTowersList)
         attacker->targetKilled();
-    _game->removedEnemy(this);
+    _game->removedenemy(this);
 }
 
 void enemy1::getDamage(int damage)
@@ -114,8 +114,8 @@ void enemy1::getDamage(int damage)
 
     if (_currentHp <= 0)
     {
-        _game->audioPlayer()->playSound(EnemyDestorySound);
-        _game->awardGold(200);
+        _game->sound()->playSound(EnemyDestorySound);
+        _game->awardgold(200);
         getRemoved();
     }
 }

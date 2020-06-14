@@ -1,7 +1,7 @@
 #include "basictower.h"
 #include "enemy1.h"
-
-#include "mainwindow.h"
+#include"attack.h"
+#include "dialog.h"
 #include "effect.h"
 #include <QPainter>
 #include <QColor>
@@ -10,9 +10,9 @@
 #include <QtMath>
 
 
-const QSize Tower::ms_fixedSize(64,64);
+const QSize basictower::ms_fixedSize(64,64);
 
-basictower::basictower(QPoint pos, MainWindow *game, const QPixmap &sprite)
+basictower::basictower(QPoint pos, Dialog *game, const QPixmap &sprite)
     : _attacking(false)
     , _attackRange(70)
     , _damage(15)

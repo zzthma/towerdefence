@@ -1,5 +1,8 @@
 QT       += core gui
 
+QT       += core gui multimedia
+
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -16,21 +19,27 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    attack.cpp \
     basictower.cpp \
     dialog.cpp \
     enemy1.cpp \
+    listreader.cpp \
     main.cpp \
     mainwindow.cpp \
     route.cpp \
+    sound.cpp \
     towerposition.cpp
 
 HEADERS += \
+    attack.h \
     basictower.h \
     dialog.h \
     effect.h \
     enemy1.h \
+    listreader.h \
     mainwindow.h \
     route.h \
+    sound.h \
     towerposition.h
 
 FORMS += \

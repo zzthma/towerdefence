@@ -6,14 +6,15 @@
 #include <QObject>
 #include <QPainter>
 #include <QTime>
-#include "enemy1.h"
-#include "mainwindow.h"
+class enemy1;
+class Dialog;
+
 
 class basictower : public QObject
 {
     Q_OBJECT
 public:
-    basictower(QPoint pos, MainWindow *game, const QPixmap &sprite = QPixmap(":/basic.png"));
+    basictower(QPoint pos, Dialog *game, const QPixmap &sprite = QPixmap(":/basic.png"));
     ~basictower();
 
     void draw(QPainter *painter) const;
@@ -36,7 +37,7 @@ private:
     qreal			_rotationSprite;
 
     enemy1 *			_chooseenemy;
-    MainWindow *	_game;
+    Dialog *	_game;
     QTimer *		_fireRateTimer;
 
     const QPoint	_pos;
